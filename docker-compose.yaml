@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+    rabbitmq:
+        container_name: "rabbitmq"
+        image: rabbitmq:3.9-management-alpine
+        restart: always
+        environment:
+            - RABBITMQ_DEFAULT_USER=ezarzadzanie
+            - RABBITMQ_DEFAULT_PASS=changeme
+        ports:
+            # AMQP protocol port
+            - '5672:5672'
+            # HTTP management UI
+            - '15672:15672'
+
+    publisher:
+        container_name: event_publisher
+        build:
+            context: ./
+        entrypoint: python3 publisher.py
+        volumes:
+            - ./src/logs/:/app/logs/
+
+
+    consumer:
+        container_name: event_consumer
+        build:
+            context: ./
+        entrypoint: python3 consumer.py
+        volumes:
+            - ./src/logs/:/app/logs/
