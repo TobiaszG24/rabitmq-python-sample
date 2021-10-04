@@ -12,4 +12,4 @@ WORKDIR /app
 
 COPY src .
 
-CMD ["python3", "publisher.py"]
+CMD ["python3", "consumer.py"]
