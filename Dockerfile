@@ -1,5 +1,4 @@
 ARG PYTHON_V=3.9.6
-ARG CMD_START_FILE=
 
 FROM python:${PYTHON_V}
 
