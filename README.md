@@ -1,5 +1,5 @@
-# RUN
-1. ```bash
+## how to run
+```bash
 docker-compose up -d --build
 ```
-2. Check your local src/logs dir
+Check your local src/logs dir
